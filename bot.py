@@ -22,14 +22,14 @@ from pyrogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton,
     CallbackQuery, InlineQuery)
 
-Mo_tech_mrk_yt = Client(
+MADOUTBOTZ = Client(
    "Telegra.ph Uploader",
    api_id=Config.APP_ID,
    api_hash=Config.API_HASH,
    bot_token=Config.TG_BOT_TOKEN,
 )
 
-@Mo_tech_mrk_yt.on_message(filters.photo)
+@MADOUTBOTZ.on_message(filters.photo)
 async def uploadphoto(client, message):
   msg = await message.reply_text("`Tʀʏɪɴɢ Tᴏ Dᴏᴡɴʟᴏᴀᴅ`")
   userid = str(message.chat.id)
@@ -44,7 +44,7 @@ async def uploadphoto(client, message):
     await msg.edit_text(f"https://telegra.ph{tlink[0]}")     
     os.remove(img_path) 
 
-@Mo_tech_mrk_yt.on_message(filters.animation)
+@MADOUTBOTZ.on_message(filters.animation)
 async def uploadgif(client, message):
   if(message.animation.file_size < 5242880):
     msg = await message.reply_text("`Tʀʏɪɴɢ Tᴏ Dᴏᴡɴʟᴏᴀᴅ`")
@@ -61,7 +61,7 @@ async def uploadgif(client, message):
   else:
     await message.reply_text("Size Should Be Less Than 5 mb")
 
-@Mo_tech_mrk_yt.on_message(filters.video)
+@MADOUTBOTZ.on_message(filters.video)
 async def uploadvid(client, message):
   if(message.video.file_size < 5242880):
     msg = await message.reply_text("`Tʀʏɪɴɢ Tᴏ Dᴏᴡɴʟᴏᴀᴅ`")
@@ -78,15 +78,15 @@ async def uploadvid(client, message):
   else:
     await message.reply_text("Size Should Be Less Than 5 mb")
 
-@Mo_tech_mrk_yt.on_message(filters.command(["start"]))
+@MADOUTBOTZ.on_message(filters.command(["start"]))
 async def home(client, message):
   buttons = [[
         InlineKeyboardButton('🤔Help', callback_data='help'),
         InlineKeyboardButton('Close🔐', callback_data='close')
     ],
     [
-        InlineKeyboardButton('🗣️Any Doubt', url='http://telegram.me/mo_tech_Group'),
-        InlineKeyboardButton('Source Code📃', url='https://github.com/MoTechYT/MT-TelegraPh')
+        InlineKeyboardButton('🗣️Any Doubt', url='http://telegram.me/MADOUTBOTZ'),
+        
     ]]
   reply_markup = InlineKeyboardMarkup(buttons)
   await Mo_tech_mrk_yt.send_message(
@@ -97,7 +97,7 @@ Am a telegraph Uploader That Can Upload Photo, Video And Gif
         
 Simply send me photo, video or gif under 5MB I will upload it to Telegra.ph
         
-Made With Love By @Mo_Tech_YT</b>""",
+Made With Love By @MADOUTBOTZ</b>""",
         reply_markup=reply_markup,
         parse_mode="html",
         reply_to_message_id=message.message_id
@@ -110,7 +110,7 @@ async def help(client, message):
         InlineKeyboardButton('Close🔐', callback_data='close')
     ],
     [
-        InlineKeyboardButton('⚕️Our Channel⚕️', url='http://telegram.me/Mo_Tech_YT')
+        InlineKeyboardButton('⚕️Our Channel⚕️', url='http://telegram.me/MADOUTBOTZ')
     ]]
   reply_markup = InlineKeyboardMarkup(buttons)
   await Mo_tech_mrk_yt.send_message(
@@ -124,7 +124,7 @@ i'll upload it to telegra.ph and give you the direct link**""",
         parse_mode="html",
         reply_to_message_id=message.message_id
     )                           
-@Mo_tech_mrk_yt.on_callback_query()
+@MADOUTBOTZ.on_callback_query()
 async def button(Tgraph, update):
       cb_data = update.data
       if "help" in cb_data:
@@ -136,4 +136,4 @@ async def button(Tgraph, update):
         await update.message.delete()
         await home(Tgraph, update.message)
 
-Mo_tech_mrk_yt.run()
+MADOUTBOTZ.run()
